@@ -115,67 +115,23 @@
                         <h3>Questions</h3>
                         <div class="form-group" style="margin-bottom:8px">  
                             <div class="span2" style="margin-left:0; float: none">
-                                <a class="btn btn-theme btn-block">Add question</a>
+                                <a id="addQuestion" class="btn btn-theme btn-block">Add question</a>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control span7" placeholder="Question">
-                            <select class="form-control span4">
-                                <option>Type</option>
-                                <option>Short text</option>
-                                <option>Long text</option>
-                                <option>Checkbox</option>
-                                <option>Radio button</option>
-                            </select>
-                            <a class="btn btn-danger" style="margin-bottom: 10px">X</a>
+                        <div id="questions">
+                          <div class="form-group">
+                              <input type="text" class="form-control span7" placeholder="Question">
+                              <select id="selectCategory" class="form-control span4" onchange="catFunction()">
+                                  <option value="optionShort" id="optionShort">Short text</option>
+                                  <option value="optionLong" id="optionLong">Long text</option>
+                                  <option value="optionCheck" id="optionCheck">Checkbox</option>
+                                  <option value="optionRadio" id="optionRadio">Radio button</option>
+                              </select>
+                              <a class="btn btn-danger" style="margin-bottom: 10px">X</a>
+                          </div>
+                          <div class="form-group" id="answer" style="margin-bottom:8px;">
+                          </div>
                         </div>
-                        <div class="form-group" style="margin-bottom:8px; display: none">
-                            <div class="form-check">
-                                <input class="form-check-input span1" type="checkbox" style="cursor:default" disabled>
-                                <input type="text" class="form-control span9" style="margin-bottom:-2px" placeholder="Answer">
-                                <a class="btn btn-success">+</a>
-                                <a class="btn btn-danger">x</a>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control span7" placeholder="Question">
-                            <select class="form-control span4">
-                                <option>Type</option>
-                                <option>Short text</option>
-                                <option>Long text</option>
-                                <option>Checkbox</option>
-                                <option>Radio button</option>
-                            </select>
-                            <a class="btn btn-danger" style="margin-bottom: 10px">X</a>
-                        </div>
-                        <div class="form-group" style="margin-bottom:8px">
-                            <div class="form-check">
-                                <input class="form-check-input span1" type="checkbox" style="cursor:default" disabled>
-                                <input type="text" class="form-control span9" style="margin-bottom:-2px" placeholder="Answer">
-                                <a class="btn btn-success">+</a>
-                                <a class="btn btn-danger">x</a>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control span7" placeholder="Question">
-                            <select class="form-control span4">
-                                <option>Type</option>
-                                <option>Short text</option>
-                                <option>Long text</option>
-                                <option>Checkbox</option>
-                                <option>Radio button</option>
-                            </select>
-                            <a class="btn btn-danger" style="margin-bottom: 10px">X</a>
-                        </div>
-                        <div class="form-group" style="margin-bottom:8px">
-                            <div class="form-check">
-                                <input class="form-check-input span1" type="radio" style="cursor:default" disabled>
-                                <input type="text" class="form-control span9" style="margin-bottom:-2px" placeholder="Answer">
-                                <a class="btn btn-success">+</a>
-                                <a class="btn btn-danger">x</a>
-                            </div>
-                        </div>
-
                         <div class="span2" style="margin-left:0">
                             <button type="submit" class="btn btn-primary btn-block " style="margin-top: 16px">Submit</button>
                         </div>
@@ -241,6 +197,24 @@
 
   <!-- Template Custom JavaScript File -->
   <script src="js/custom.js"></script>
+
+  <script>
+    function catFunction() {
+      if (document.getElementById('selectCategory').value == "optionCheck") {
+        document.getElementById("answer").innerHTML = "<div class='form-check'><input class='form-check-input span1' type='checkbox' style='cursor:default' disabled> <input type='text' class='form-control span9' style='margin-bottom:-2px' placeholder='Answer'><a class='btn btn-success'>+</a><a class='btn btn-danger'>x</a></div>";
+      }
+      else if (document.getElementById('selectCategory').value == "optionRadio") {
+        document.getElementById("answer").innerHTML = "<div class='form-check'><input class='form-check-input span1' type='radio' style='cursor:default' disabled> <input type='text' class='form-control span9' style='margin-bottom:-2px' placeholder='Answer'><a class='btn btn-success'>+</a><a class='btn btn-danger'>x</a></div>";
+      }
+    }
+    </script>
+    <script>
+      $(document).ready(function(){
+        $("#addQuestion").click(function(){
+          $("#questions").append('<div class="form-group"><input type="text" class="form-control span7" placeholder="Question"><select id="selectCategory" class="form-control span4" onchange="catFunction()"><option>Type</option><option value="optionShort" id="optionShort">Short text</option><option value="optionLong" id="optionLong">Long text</option><option value="optionCheck" id="optionCheck">Checkbox</option><option value="optionRadio" id="optionRadio">Radio button</option></select><a class="btn btn-danger" style="margin-bottom: 10px">X</a></div><div class="form-group" id="answer" style="margin-bottom:8px;"></div>');
+        });
+      });
+    </script>
 
 </body>
 </html>
