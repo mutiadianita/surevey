@@ -2713,5 +2713,7 @@ article img.pull-right, article .align-right {
   text-align: center;
   outline: 0;
 }
-
+.important-tag {
+  color: red;
+}
 /* Theme Styler :: End */
